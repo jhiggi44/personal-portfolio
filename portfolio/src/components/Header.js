@@ -28,7 +28,6 @@ const TxtContainer = styled.div`
 
 const TxtBlock = styled.div`
     position: absolute;
-    ${props => props.pos};
     background-color: ${props => props.color};
     padding: 25px;
     display: inline-block;
@@ -94,8 +93,8 @@ function Header() {
         <Container>
             <IntroImg />
             <TxtContainer>
-                <TxtBlock pos={`top: 5vh; left: calc(20% + ${pos/(10 * sizingOffset)}px);`} color="#f3db95">Jordan Higgins</TxtBlock>
-                <TxtBlock pos={`top: 20vh; right: calc(${20/sizingOffset}% + ${pos/(10 * sizingOffset)}px);`} color="#a1a1ff">A Software Developer</TxtBlock>
+                <TxtBlock style={{top: "5vh", left: `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#f3db95">Jordan Higgins</TxtBlock>
+                <TxtBlock style={{top: "20vh", right: `calc(${20/sizingOffset}% + ${pos/(10 * sizingOffset)}px)`}} color="#a1a1ff">A Software Developer</TxtBlock>
             </TxtContainer>
             {blockInfo.map((block, i) => 
                 <BitBlock key={i} margin={block.margin} zIndex={block.zIndex} style={{bottom: `${((pos) / block.speed) - block.offset}vh`}}>

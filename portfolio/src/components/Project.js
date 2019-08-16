@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import infoLogo from '../images/info.svg';
 
 const Container = styled.div`
+    position: relative;
     height: 100%;
     width: 100%;
-    position: relative;
 `;
 
 const Img = styled.img`
@@ -16,10 +16,10 @@ const Img = styled.img`
 `;
 
 const Info = styled.div`
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    position: absolute;
     top: 0;
     left: 0;
     height: 100%;
@@ -35,8 +35,6 @@ const Title = styled.h3`
     font-size: calc(28px + (42 - 28) * ((100vw - 600px) / (1600 - 600)));
     text-align: center;
     font-family: 'Alfa Slab One', cursive;
-    // font-family: 'Luckiest Guy', cursive;
-    // font-family: 'Bangers', cursive;
 `;
 
 const Summary = styled.div`
@@ -45,15 +43,15 @@ const Summary = styled.div`
 `;
 
 const SummaryTxt = styled.p`
-    padding: 2px;
-    line-height: calc(24px + (34 - 24) * ((100vw - 600px) / (1600 - 600)));
-    font-size: calc(18px + (26 - 18) * ((100vw - 600px) / (1600 - 600)));
-    letter-spacing: .5px;
     display: inline;
+    padding: 2px;
     color: white;
     background-color: black;
     opacity: .8;
     font-family: 'Roboto Mono', monospace;
+    line-height: calc(24px + (34 - 24) * ((100vw - 600px) / (1600 - 600)));
+    font-size: calc(18px + (26 - 18) * ((100vw - 600px) / (1600 - 600)));
+    letter-spacing: .5px;
 `;
 
 const ToGitHub = styled.a`

@@ -3,30 +3,29 @@ import styled from 'styled-components';
 import * as emailjs from 'emailjs-com';
 
 const Container = styled.div`
-    font-family: 'Roboto Mono', monospace;
     margin: 0 10vw;
+    font-family: 'Roboto Mono', monospace;
 `;
 
 const Title = styled.h2`
+    padding-top: 80px;
+    margin-bottom: 80px;
     font-size: 60px;
     text-align: center;
     color: #020343;
-    // color: #88918e;
-    padding-top: 80px;
-    margin-bottom: 80px;
 `;
 
 const Label = styled.label`
     display: block;
+    margin: 40px auto 0 auto;
     width: 100%;
     max-width: 650px;
-    margin: 0 auto;
-    margin-top: 40px;
     color: #88918e;
     color: #020343;
 `;
 
 const Input = styled.input`
+    margin: 10px auto;
     display: block;
     width: 100%;
     max-width: 650px;
@@ -34,7 +33,6 @@ const Input = styled.input`
     border-bottom: 3px solid #020343;;
     font-size: 22px;
     font-family: 'Roboto Mono', monospace;
-    margin: 10px auto;
     color: #7a7ae6;
     
     :focus {
@@ -45,16 +43,15 @@ const Input = styled.input`
 `;
 
 const MsgBox = styled.textarea`
+    margin: 10px auto 0 auto;
+    padding: 5px 10px;
     display: block;
     width: 100%;
     max-width: 625px;
-    margin: 0 auto;
-    margin-top: 10px;
     width: 100%;
     height: auto;
     border: none;
     border-bottom: 3px solid #020343;;
-    padding: 5px 10px;
     font-family: 'Roboto Mono', monospace;
     color: #7a7ae6;
     color: #a1a1ff;
@@ -68,17 +65,16 @@ const MsgBox = styled.textarea`
 
 const SubmitBtn = styled.button`
     display: block;
+    margin: 50px auto 0 auto;
+    padding: 10px 0;
     width: 100%;
     max-width: 650px;
-    margin: 0 auto;
-    margin-top: 50px;
     border: none;
     border-radius: 2px;
     background-color: #7a7ae6;
     background-color: #a1a1ff;
     text-align: center;
     font-size: 22px;
-    padding: 10px 0;
     color: white;
     font-family: 'Roboto Mono', monospace;
 `;
@@ -105,7 +101,6 @@ function Contact() {
                     onChange={(e) => {
                         setEmail(e.target.value);
                     }}
-                    onClick
                 />
                 <Label
                     onSelect={(e)=> {
@@ -123,9 +118,8 @@ function Contact() {
                             setIsMsg(true);
                         }
                     }}
-                >
-                    Type Your Message here...
-                </MsgBox>
+                    defaultValue="Type your message here..."
+                />
                 <SubmitBtn onClick={(e) => {
                     e.preventDefault();
                     var templateParams = {

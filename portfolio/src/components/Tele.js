@@ -6,35 +6,30 @@ import rightBtn from '../images/right-btn.svg';
 import tvSpeaker from '../images/tv-speaker.svg';
 
 const OuterBox = styled.div`
+    margin: auto;
+    padding: 20px 0;
     height: calc(${props => props.isWide} + 10vh);
     width: ${props => props.isWide};
     background-color: #664F44;
-    // background-color: #88918e;
-    margin: auto;
-    // -moz-box-shadow: inset 0 0 15px black;
-    // -webkit-box-shadow: inset 0 0 15px black;
-    // box-shadow: inset 0 0 15px black;
     -webkit-box-shadow: 0 15px 16px -6px black;
-	   -moz-box-shadow: 0 15px 16px -6px black;
-	        box-shadow: 0 15px 16px -6px black;
+	-moz-box-shadow: 0 15px 16px -6px black;
+	box-shadow: 0 15px 16px -6px black;
     border-radius: 15px;
-    padding: 20px 0;
 `;
 
 const InnerBox = styled.div`
+    margin: 0 auto 2.5% auto;
+    padding-top: 25px;
     width: 90%;
     height: 75%;
-    margin: 0 auto;
     background-color: black;
     border-radius: 25px;
-    padding-top: 25px;
-    margin-bottom: 2.5%;
 `;
 
 const Screen = styled.div`
+    margin: auto;
     width: 90%;
     height: calc(100% - 25px);
-    margin: auto;
     background-color: white;
     border-radius: 55px;
     overflow: hidden;
@@ -56,12 +51,11 @@ const ControlPanel = styled.div`
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 85%;
-    height: 20%;
     margin: 0 auto;
     padding: 0 10px;
+    width: 85%;
+    height: 20%;
     background-color: #404040;
-    // background-color: #88918e;
     -moz-box-shadow: inset 0 0 15px black;
     -webkit-box-shadow: inset 0 0 15px black;
     box-shadow: inset 0 0 15px black;
@@ -101,7 +95,7 @@ function Tele({children}) {
         return function cleanup() {
             clearTimeout(timerId);
         }
-    }, [isWider, position]);
+    }, [isWider, position, children.length]);
     
     return (
         <OuterBox isWide={isWider ? "80vh" : "98vw"}>
