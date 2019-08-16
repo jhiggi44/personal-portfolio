@@ -15,10 +15,11 @@ const Container = styled.div`
 
 const Title = styled.h2`
     margin-bottom: 80px;
-    padding-top: 80px;
+    padding-top: 120px;
     color: #020343;
     color: black;
     font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
     font-size: 60px;
     text-align: center;
 `;

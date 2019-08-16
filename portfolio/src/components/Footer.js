@@ -43,6 +43,7 @@ const AboutContainer = styled.div`
 const AboutHeader = styled.h3`
     margin: 15px 10px;
     font-size: calc(24px + (36 - 24) * ((100vw - 600px) / (1600 - 600)));
+    font-weight: bold;
     color: #020343;
     text-align: center;
 `;

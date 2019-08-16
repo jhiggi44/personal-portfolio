@@ -32,8 +32,9 @@ const TxtBlock = styled.div`
     padding: 25px;
     display: inline-block;
     color: black;
-    font-size: calc(22px + (38 - 22) * ((100vw - 600px) / (1600 - 600)));
-    font-family: 'Roboto Mono', monospace;
+    font-size: calc(14px + (28 - 14) * ((100vw - 600px) / (1600 - 600)));
+    font-family: 'Press Start 2P', monospace;
+    text-align: center;
     z-index: 3;
 `;
 
@@ -94,7 +95,7 @@ function Header() {
             <IntroImg />
             <TxtContainer>
                 <TxtBlock style={{top: "5vh", left: `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#f3db95">Jordan Higgins</TxtBlock>
-                <TxtBlock style={{top: "20vh", right: `calc(${20/sizingOffset}% + ${pos/(10 * sizingOffset)}px)`}} color="#a1a1ff">A Software Developer</TxtBlock>
+                <TxtBlock style={{top: "20vh", right: `calc(${20/sizingOffset}% + ${pos/(10 * sizingOffset)}px)`}} color="#a1a1ff"><div>A Software</div> <div>Developer</div></TxtBlock>
             </TxtContainer>
             {blockInfo.map((block, i) => 
                 <BitBlock key={i} margin={block.margin} zIndex={block.zIndex} style={{bottom: `${((pos) / block.speed) - block.offset}vh`}}>

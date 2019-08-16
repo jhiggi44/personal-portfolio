@@ -10,7 +10,8 @@ const Container = styled.div`
 const Title = styled.h2`
     padding-top: 80px;
     margin-bottom: 80px;
-    font-size: 60px;
+    font-size: 50px;
+    font-weight: bold;
     text-align: center;
     color: #020343;
 `;

@@ -24,11 +24,12 @@ const ImgOverlay = styled.div`
     position: absolute;
     bottom: 50px;
     left: 0;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     width: 100%;
     color: #f3db95;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 26px;
+    font-family: 'Press Start 2P', monospace;
+    line-height: 35px;
+    font-size: calc(18px + (32 - 18) * ((100vw - 600px) / (1600 - 600)));
 `;
 
 const Txt = styled.p`

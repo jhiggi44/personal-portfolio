@@ -32,9 +32,9 @@ const Info = styled.div`
 const Title = styled.h3`
     margin: 0 auto;
     max-width: 90%;
-    font-size: calc(28px + (42 - 28) * ((100vw - 600px) / (1600 - 600)));
+    font-size: calc(24px + (38 - 24) * ((100vw - 600px) / (1600 - 600)));
     text-align: center;
-    font-family: 'Alfa Slab One', cursive;
+    font-family: 'Press Start 2P', monospace;
 `;
 
 const Summary = styled.div`
