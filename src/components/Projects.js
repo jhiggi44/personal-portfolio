@@ -5,12 +5,14 @@ import Project from './Project';
 import Tele from './Tele';
 
 const Container = styled.div`
-    margin-top: -50px;
     padding-bottom: 120px;
     width: 100vw;
     height: auto;
     background-color: #f3db95;
     clip-path: polygon(83% 2%, 100% 0, 100% 100%, 19% 98%, 0 100%, 0 0);
+    clip-path: polygon(100% 0, 100% 100%, 35% 98%, 0 100%, 0 0);
+    position: relative;
+    z-index: 1;
 `;
 
 const Title = styled.h2`

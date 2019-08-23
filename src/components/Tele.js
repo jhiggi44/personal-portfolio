@@ -13,7 +13,7 @@ const OuterBox = styled.div`
     background-color: #664F44;
     -webkit-box-shadow: 0 15px 16px -6px black;
 	-moz-box-shadow: 0 15px 16px -6px black;
-	box-shadow: 0 15px 16px -6px black;
+    box-shadow: 0 15px 16px -6px black;
     border-radius: 15px;
 `;
 
