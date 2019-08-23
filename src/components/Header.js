@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import IntroImg from './IntroImg';
-import fade from '../images/fade.png'
 
 // STYLED COMPONENTS
 
