@@ -16,7 +16,7 @@ const Container = styled.div`
 const BitBlock = styled.svg`
     position: absolute;
     bottom: 0;
-    visibility: ${props => props.disappear ? "hidden" : "visible"};
+    // visibility: ${props => props.disappear ? "hidden" : "visible"};
     left: ${props => props.margin};
     z-index: ${props => props.zIndex};
 `;
@@ -71,7 +71,7 @@ function getOpacity(pos, disappearAt) {
 }
  
 // VARIABLES FOR BLOCKS
-const numOfBlocks = 80;
+let numOfBlocks = 15;
 // const colors = ["#f3db95", "#ebebeb", "#88918e", "#a1a1ff", "#7a7ae6"];
 const colors = ["#f3db95", "#a1a1ff", "#7a7ae6"];
 
@@ -81,6 +81,8 @@ function Header() {
     const [blockInfo, setInfo] = useState([]);
     const [sizingOffset, setOffset] = useState(1.5);
     useEffect(()=> {
+        numOfBlocks = Math.floor(window.innerWidth / 45);
+        console.log(`numBlock ${numOfBlocks}`);
         if (blockInfo.length === 0) {
             window.addEventListener('scroll', () => {
                 setPos(window.pageYOffset);
@@ -98,7 +100,7 @@ function Header() {
                     let blockSize = getSize();
                     infoList.push({
                         size: blockSize,
-                        offset: Math.abs(blockSize - 60) + getNumBtwn(0, 50),
+                        offset: getNumBtwn(0, 85),
                         margin: `${getMargin()}%`,
                         color: colors[getNumBtwn(0, colors.length)],
                         disappearAt: getNumBtwn(-50, 25) / 10
@@ -109,6 +111,7 @@ function Header() {
         }
     }, [blockInfo]);
 
+    // disappear={block.disappearAt <= getBottomPos(pos, block.size, block.offset, 1.4)}
     return (
         <Container>
             <IntroImg />
@@ -117,7 +120,7 @@ function Header() {
                 <TxtBlock style={{top: "20vh", right: `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#a1a1ff"><div>A Software</div> <div>Developer</div></TxtBlock>
             </TxtContainer>
             {blockInfo.map((block, i) => 
-                <BitBlock key={i} margin={block.margin} zIndex={block.size} disappear={block.disappearAt <= getBottomPos(pos, block.size, block.offset, 1.4)} style={{bottom: `${getBottomPos(pos, block.size, block.offset, 1.4)}vh`}}>
+                <BitBlock key={i} margin={block.margin} zIndex={block.size} style={{bottom: `${getBottomPos(pos, block.size, block.offset, 1.4)}vh`}}>
                     <rect fill={block.color} width={`${block.size/sizingOffset}px`} height={`${block.size/sizingOffset}px`} />
                 </BitBlock>
             )}

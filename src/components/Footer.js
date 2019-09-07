@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 import clearImg from '../images/clear-vintage.png';
-import pixImg from '../images/pix-vintage.png';
 import githubLogo from '../images/github-logo.svg';
 import linkLogo from '../images/linkedin-logo.svg';
 
@@ -65,7 +64,7 @@ const LogoContainer = styled.div`
     max-height: 200px;
 `;
 
-const Logo = styled.img`
+const Logo = styled.object`
     margin: 5px 0;
     height: 48%;
     object-fit: contain;
@@ -82,24 +81,7 @@ const Copyright = styled.div`
     color: #a1a1ff;
 `;
 
-
 function Footer() {
-    const [isAtBottom, setIsAtBottom] = useState(false);
-    const [isListening, setIsListening] = useState(false);
-
-    useEffect(() => {
-        if (!isListening) {
-            window.addEventListener("scroll", (e) => {
-                if ((window.innerHeight + window.scrollY + 50) >= document.body.offsetHeight) {
-                    setIsAtBottom(true);
-                } else {
-                    setIsAtBottom(false);
-                }
-            });
-            setIsListening(true);
-        }
-    }, [isListening]);
-
     return (
         <Container>
             <AboutContainer>
@@ -110,13 +92,13 @@ function Footer() {
             </AboutContainer>
             <ImgContainer>
                 <ProfilePic 
-                    src={isAtBottom ? clearImg : pixImg }
-                    onClick={() => setIsAtBottom(!isAtBottom)} 
+                    src={clearImg}
                 />
             </ImgContainer>
             <LogoContainer>
-                    <Logo 
+                    <Logo
                         src={githubLogo}
+                        onCli
                         onClick={() => window.location = "https://github.com/jhiggi44"}
                     />
                     <Logo 

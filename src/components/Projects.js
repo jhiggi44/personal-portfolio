@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const Title = styled.h2`
     margin-bottom: 80px;
-    padding-top: 120px;
+    padding-top: 80px;
     color: #020343;
     color: black;
     font-family: 'Roboto Mono', monospace;
