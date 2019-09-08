@@ -6,7 +6,7 @@ import Footer from './Footer';
 
 function Portfolio() {
     return (
-        <div>
+        <div style={{overflow: "hidden"}}>
             <Header />
             <Projects />
             <Contact />

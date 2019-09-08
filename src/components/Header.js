@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import IntroImg from './IntroImg';
+import xWingL from '../images/x_wing_l.svg';
+import xWingR from '../images/x_wing_r.svg';
 
 // STYLED COMPONENTS
 
@@ -9,11 +11,12 @@ const Container = styled.div`
     position: relative;
     width: 100vw;
     background-color: #020343;
+    background-color: black;
     overflow: hidden;
     z-index: 0;
 `;
 
-const BitBlock = styled.svg`
+const BitBlock = styled.object`
     position: absolute;
     bottom: 0;
     // visibility: ${props => props.disappear ? "hidden" : "visible"};
@@ -56,14 +59,14 @@ function getMargin() {
 function getSize() {
     let rand = getNumBtwn(0, 100);
     if(rand < 70)
-        return getNumBtwn(15, 30);
+        return getNumBtwn(50, 125);
     if(rand < 95)
-        return getNumBtwn(30, 50);
-    return getNumBtwn(50, 60);
+        return getNumBtwn(175, 225);
+    return getNumBtwn(250, 325);
 }
 
 function getBottomPos(pos, size, offset, rate) {
-    return (pos / (size / rate)) - (offset);
+    return (pos / (((250 - size) / 1.5)/ rate)) - (offset);
 }
 
 function getOpacity(pos, disappearAt) {
@@ -89,9 +92,9 @@ function Header() {
             });
 
             if(window.innerWidth < 600) {
-                setOffset(2.5);
+                setOffset(2.25);
             } else if (window.innerWidth < 900) {
-                setOffset(2);
+                setOffset(1.925);
             }
             // creates a random infomap to generate randomized blocks that rise with different speeds. 
             (function (total) {
@@ -100,10 +103,9 @@ function Header() {
                     let blockSize = getSize();
                     infoList.push({
                         size: blockSize,
-                        offset: getNumBtwn(0, 85),
-                        margin: `${getMargin()}%`,
+                        offset: getNumBtwn(0, 200),
+                        margin: getMargin(),
                         color: colors[getNumBtwn(0, colors.length)],
-                        disappearAt: getNumBtwn(-50, 25) / 10
                     });
                 }
                 setInfo(infoList);
@@ -116,12 +118,14 @@ function Header() {
         <Container>
             <IntroImg />
             <TxtContainer>
-                <TxtBlock style={{top: "5vh", left: `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#f3db95">Jordan Higgins</TxtBlock>
-                <TxtBlock style={{top: "20vh", right: `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#a1a1ff"><div>A Software</div> <div>Developer</div></TxtBlock>
+                {/* <TxtBlock style={{top: "5vh", left: `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#f3db95">Jordan Higgins</TxtBlock>
+                <TxtBlock style={{top: "20vh", right: `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#a1a1ff"><div>A Software</div> <div>Developer</div></TxtBlock> */}
             </TxtContainer>
             {blockInfo.map((block, i) => 
-                <BitBlock key={i} margin={block.margin} zIndex={block.size} style={{bottom: `${getBottomPos(pos, block.size, block.offset, 1.4)}vh`}}>
-                    <rect fill={block.color} width={`${block.size/sizingOffset}px`} height={`${block.size/sizingOffset}px`} />
+                // <BitBlock key={i} margin={block.margin} zIndex={block.size} style={{bottom: `${getBottomPos(pos, block.size, block.offset, 1.4)}vh`}}>
+                //     <rect fill={block.color} width={`${block.size/sizingOffset}px`} height={`${block.size/sizingOffset}px`} />
+                // </BitBlock>
+                <BitBlock margin={`${block.margin}%`} zIndex={block.size} data={(block.margin > 45) ? xWingL : xWingR} width={`${block.size/sizingOffset}px`} style={{bottom: `${getBottomPos(pos, block.size, block.offset, 5)}vh`}}>
                 </BitBlock>
             )}
         </Container>

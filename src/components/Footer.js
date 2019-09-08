@@ -98,7 +98,6 @@ function Footer() {
             <LogoContainer>
                     <Logo
                         src={githubLogo}
-                        onCli
                         onClick={() => window.location = "https://github.com/jhiggi44"}
                     />
                     <Logo 

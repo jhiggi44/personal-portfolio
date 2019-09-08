@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import pic from '../images/intro.png';
+import deathStar from '../images/death_star.jpeg';
 
 const ImgContainer = styled.div`
     position: relative;
@@ -41,10 +42,10 @@ const Txt = styled.p`
 function IntroImg() {
     return (
         <ImgContainer>
-            <Img src={pic}/>
+            <Img src={deathStar}/>
             <ImgOverlay>
-                <Txt>Inspired by the 80s.</Txt>
-                <Txt>Not stuck in it.</Txt>
+                {/* <Txt>Inspired by the 80s.</Txt>
+                <Txt>Not stuck in it.</Txt> */}
             </ImgOverlay>
         </ImgContainer>
     )
