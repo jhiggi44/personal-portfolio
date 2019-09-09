@@ -11,7 +11,6 @@ import stars from '../images/stars.png';
 const Container = styled.div`
     position: relative;
     width: 100vw;
-    background-color: #020343;
     background-image: url("${stars}");
     // background: linear-gradient(black, grey);
     overflow: hidden;
@@ -123,8 +122,8 @@ function Header() {
         <Container>
             <IntroImg />
             <TxtContainer>
-                <TxtBlock style={{top: "5vh", left: (sizingOffset === 2.25) ?  "5%": `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#AF3333">That's no moon!</TxtBlock>
-                <TxtBlock style={{top: "20vh", right: (sizingOffset === 2.25) ?  "5%" : `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#B8C795">It's a portfolio!</TxtBlock>
+                <TxtBlock style={{top: "5vh", left: (sizingOffset === 2.25) ?  "5%": `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#F0EB5B">That's no moon!</TxtBlock>
+                <TxtBlock style={{top: "20vh", right: (sizingOffset === 2.25) ?  "5%" : `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#F0EB5B">It's a portfolio!</TxtBlock>
             </TxtContainer>
             {blockInfo.map((block, i) => 
                 // <BitBlock key={i} margin={block.margin} zIndex={block.size} style={{bottom: `${getBottomPos(pos, block.size, block.offset, 1.4)}vh`}}>

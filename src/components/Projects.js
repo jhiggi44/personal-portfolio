@@ -13,6 +13,7 @@ const Container = styled.div`
     background-color: #f3db95;
     background-color: #BFBFBF;
     background-color: #665D5E;
+    background-color: white;
     // background: linear-gradient(black, grey);
     // clip-path: polygon(83% 2%, 100% 0, 100% 100%, 19% 98%, 0 100%, 0 0);
     // clip-path: polygon(100% 0, 100% 100%, 35% 98%, 0 100%, 0 0);

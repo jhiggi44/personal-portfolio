@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import * as emailjs from 'emailjs-com';
 
 const Container = styled.div`
-    margin: 0 10vw;
+    // margin: 0 10vw;
+    padding: 0 10vw 80px 10vw;
+    background-color: #BFBFBF;
     font-family: 'Roboto Mono', monospace;
 `;
 
@@ -14,7 +16,7 @@ const Title = styled.h2`
     font-size: 50px;
     font-weight: 400;
     text-align: center;
-    color: black;
+    color: #665D5E;
 `;
 
 const Label = styled.label`
@@ -22,8 +24,7 @@ const Label = styled.label`
     margin: 40px auto 0 auto;
     width: 100%;
     max-width: 650px;
-    color: #88918e;
-    color: black;
+    color: #665D5E;
 `;
 
 const Input = styled.input`
@@ -32,15 +33,16 @@ const Input = styled.input`
     width: 100%;
     max-width: 650px;
     border: none;
-    border-bottom: 3px solid #BFBFBF;
+    background-color: #BFBFBF;
+    border-bottom: 3px solid black;
     font-size: 22px;
     font-family: 'Roboto Mono', monospace;
-    color: #BFBFBF;
+    color: black;
     
     :focus {
         padding-top: 20px;
         border-bottom: 5px solid #7a7ae6;
-        border-bottom: 5px solid #B8C795;
+        border-bottom: 5px solid #F0EB5B;
     }
 `;
 
@@ -53,15 +55,16 @@ const MsgBox = styled.textarea`
     width: 100%;
     height: auto;
     border: none;
-    border-bottom: 3px solid #BFBFBF;
+    border-bottom: 3px solid black;
     font-family: 'Roboto Mono', monospace;
-    color: #7a7ae6;
-    color: #B8C795;
+    background-color: #BFBFBF;
+    font-size: 22px;
+    color: black;
 
     :focus {
         padding-top: 20px;
         border-bottom: 5px solid #7a7ae6;
-        border-bottom: 5px solid #B8C795;
+        border-bottom: 5px solid #F0EB5B;
     }
 `;
 
@@ -73,10 +76,10 @@ const SubmitBtn = styled.button`
     max-width: 650px;
     border: none;
     border-radius: 2px;
-    background-color: #BCC795;
+    background-color: #F0EB5B;
     text-align: center;
     font-size: 22px;
-    color: white;
+    color: black;
     font-family: 'Roboto Mono', monospace;
 `;
 
@@ -89,14 +92,14 @@ function Contact() {
         <Container>
             <Title>Contact Me</Title>
             <form>
-                <Label>Your Name:</Label>
+                <Label>Full Name:</Label>
                 <Input
                     type="text"
                     onChange={(e) => {
                         setName(e.target.value);
                     }}
                 />
-                <Label>Your Email:</Label>
+                <Label>Email:</Label>
                 <Input
                     type="text"
                     onChange={(e) => {
@@ -108,7 +111,7 @@ function Contact() {
                         e.target.style.color = "pink";
                     }}
                 >
-                    Your Message:</Label>
+                    Message:</Label>
                 <MsgBox
                     onChange={(e) => {
                         setMsg(e.target.value);
@@ -119,7 +122,7 @@ function Contact() {
                             setIsMsg(true);
                         }
                     }}
-                    defaultValue="Type your message here..."
+                    defaultValue="Ask me anything..."
                 />
                 <SubmitBtn onClick={(e) => {
                     e.preventDefault();

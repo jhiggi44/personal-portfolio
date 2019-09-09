@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import clearImg from '../images/clear-vintage.png';
-import githubLogo from '../images/github-logo.svg';
-import linkLogo from '../images/linkedin-logo.svg';
+import githubLogo from '../images/github-logo-yellow.svg';
+import linkLogo from '../images/linkedin-logo-yellow.svg';
 import stars from '../images/stars.png';
 
 const Container = styled.div`
@@ -12,7 +12,6 @@ const Container = styled.div`
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    margin-top: 80px;
     width: 100vw;
     max-width: 100vw;
     height: auto;
