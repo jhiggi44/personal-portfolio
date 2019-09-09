@@ -23,7 +23,7 @@ const InnerBox = styled.div`
     width: 90%;
     height: 75%;
     background-color: black;
-    border-radius: 25px;
+    border-radius: 45px;
 `;
 
 const Screen = styled.div`
@@ -33,7 +33,7 @@ const Screen = styled.div`
     background-color: white;
     border-radius: 55px;
     overflow: hidden;
-    box-shadow:  0 0 35px white;
+    box-shadow:  0 0 35px #444;
     display: flex;
 `;
 

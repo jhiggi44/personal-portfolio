@@ -2,52 +2,41 @@ import React from 'react';
 import styled from 'styled-components';
 
 import pic from '../images/intro.png';
-import deathStar from '../images/death_star.jpeg';
+import deathStar from '../images/death_star.png';
 
-const ImgContainer = styled.div`
-    position: relative;
-    height: 100vh;
+const Container = styled.div`
+    max-height: 100vh;
     width: 100vw;
 `;
 
 const Img = styled.img`
+    margin: 80px auto;
     position: relative;
+    display: block;
     margin-bottom: -5px;
-    height: 100%;
     width: 100%;
+    max-width: 600px;
     object-fit: cover;
     object-position: 50% 50%;
 `;
 
-const ImgOverlay = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    bottom: 50px;
-    left: 0;
-    margin-bottom: 30px;
-    width: 100%;
-    color: #f3db95;
-    font-family: 'Press Start 2P', monospace;
-    line-height: 35px;
-    font-size: calc(18px + (32 - 18) * ((100vw - 600px) / (1600 - 600)));
-`;
-
-const Txt = styled.p`
-    display: inline;
-    margin: auto;
-    background-color: #020343;
+const Txt = styled.div`
+    margin: 80px auto;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-family: 'Bungee', cursive;
+    color: yellow;
+    color: #F0EE5B
+    font-size: 46px;
+    font-weight: 400;
 `;
 
 function IntroImg() {
     return (
-        <ImgContainer>
+        <Container>
+            <Txt>Jordan Higgins Presents...</Txt>
             <Img src={deathStar}/>
-            <ImgOverlay>
-                {/* <Txt>Inspired by the 80s.</Txt>
-                <Txt>Not stuck in it.</Txt> */}
-            </ImgOverlay>
-        </ImgContainer>
+        </Container>
     )
 }
 

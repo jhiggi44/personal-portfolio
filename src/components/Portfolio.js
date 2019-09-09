@@ -4,14 +4,20 @@ import Projects from './Projects';
 import Contact from './Contact';
 import Footer from './Footer';
 
+import styled from 'styled-components';
+
+const Container = styled.div`
+    overflow: hidden;
+`;
+
 function Portfolio() {
     return (
-        <div style={{overflow: "hidden"}}>
+        <Container>
             <Header />
             <Projects />
             <Contact />
             <Footer />
-        </div>
+        </Container>
     )
 }
 

@@ -8,12 +8,13 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
+    font-family: 'Bungee', cursive;
     padding-top: 80px;
     margin-bottom: 80px;
     font-size: 50px;
-    font-weight: bold;
+    font-weight: 400;
     text-align: center;
-    color: #020343;
+    color: black;
 `;
 
 const Label = styled.label`
@@ -22,7 +23,7 @@ const Label = styled.label`
     width: 100%;
     max-width: 650px;
     color: #88918e;
-    color: #020343;
+    color: black;
 `;
 
 const Input = styled.input`
@@ -31,15 +32,15 @@ const Input = styled.input`
     width: 100%;
     max-width: 650px;
     border: none;
-    border-bottom: 3px solid #020343;;
+    border-bottom: 3px solid #BFBFBF;
     font-size: 22px;
     font-family: 'Roboto Mono', monospace;
-    color: #7a7ae6;
+    color: #BFBFBF;
     
     :focus {
         padding-top: 20px;
         border-bottom: 5px solid #7a7ae6;
-        border-bottom: 5px solid #a1a1ff;
+        border-bottom: 5px solid #B8C795;
     }
 `;
 
@@ -52,15 +53,15 @@ const MsgBox = styled.textarea`
     width: 100%;
     height: auto;
     border: none;
-    border-bottom: 3px solid #020343;;
+    border-bottom: 3px solid #BFBFBF;
     font-family: 'Roboto Mono', monospace;
     color: #7a7ae6;
-    color: #a1a1ff;
+    color: #B8C795;
 
     :focus {
         padding-top: 20px;
         border-bottom: 5px solid #7a7ae6;
-        border-bottom: 5px solid #a1a1ff;
+        border-bottom: 5px solid #B8C795;
     }
 `;
 
@@ -72,8 +73,7 @@ const SubmitBtn = styled.button`
     max-width: 650px;
     border: none;
     border-radius: 2px;
-    background-color: #7a7ae6;
-    background-color: #a1a1ff;
+    background-color: #BCC795;
     text-align: center;
     font-size: 22px;
     color: white;

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import IntroImg from './IntroImg';
 import xWingL from '../images/x_wing_l.svg';
 import xWingR from '../images/x_wing_r.svg';
+import stars from '../images/stars.png';
 
 // STYLED COMPONENTS
 
@@ -11,7 +12,8 @@ const Container = styled.div`
     position: relative;
     width: 100vw;
     background-color: #020343;
-    background-color: black;
+    background-image: url("${stars}");
+    // background: linear-gradient(black, grey);
     overflow: hidden;
     z-index: 0;
 `;
@@ -32,14 +34,17 @@ const TxtContainer = styled.div`
 
 const TxtBlock = styled.div`
     position: absolute;
-    background-color: ${props => props.color};
+    // background-color: ${props => props.color};
     padding: 25px;
     display: inline-block;
-    color: black;
-    font-size: calc(14px + (28 - 14) * ((100vw - 600px) / (1600 - 600)));
-    font-family: 'Press Start 2P', monospace;
+    color: yellow;
+    color: ${props => props.color};
+    font-size: calc(32px + (48 - 28) * ((100vw - 600px) / (1600 - 600)));
+    // font-family: 'Press Start 2P', monospace;
+    font-family: 'Bungee', cursive;
+    // font-family: 'Squada One', cursive;
     text-align: center;
-    z-index: 50;
+    z-index: 200;
 `;
 
 // METHODS FOR GENERATING RANDOMIZED BLOCKS
@@ -48,9 +53,9 @@ function getNumBtwn(min, max) {
 }
 
 function getMargin() {
-    let rand = getNumBtwn(0, 105);
+    let rand = getNumBtwn(0, 100);
     if(rand < 40)
-        return getNumBtwn(-5, 25);
+        return getNumBtwn(0, 25);
     if(rand < 80)
         return getNumBtwn(65, 100);
     return getNumBtwn(25, 65);
@@ -74,7 +79,7 @@ function getOpacity(pos, disappearAt) {
 }
  
 // VARIABLES FOR BLOCKS
-let numOfBlocks = 15;
+let numOfBlocks = 20;
 // const colors = ["#f3db95", "#ebebeb", "#88918e", "#a1a1ff", "#7a7ae6"];
 const colors = ["#f3db95", "#a1a1ff", "#7a7ae6"];
 
@@ -84,7 +89,7 @@ function Header() {
     const [blockInfo, setInfo] = useState([]);
     const [sizingOffset, setOffset] = useState(1.5);
     useEffect(()=> {
-        numOfBlocks = Math.floor(window.innerWidth / 45);
+        // numOfBlocks = Math.floor(window.innerWidth / 45);
         console.log(`numBlock ${numOfBlocks}`);
         if (blockInfo.length === 0) {
             window.addEventListener('scroll', () => {
@@ -103,7 +108,7 @@ function Header() {
                     let blockSize = getSize();
                     infoList.push({
                         size: blockSize,
-                        offset: getNumBtwn(0, 200),
+                        offset: getNumBtwn(0, 100),
                         margin: getMargin(),
                         color: colors[getNumBtwn(0, colors.length)],
                     });
@@ -118,8 +123,8 @@ function Header() {
         <Container>
             <IntroImg />
             <TxtContainer>
-                {/* <TxtBlock style={{top: "5vh", left: `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#f3db95">Jordan Higgins</TxtBlock>
-                <TxtBlock style={{top: "20vh", right: `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#a1a1ff"><div>A Software</div> <div>Developer</div></TxtBlock> */}
+                <TxtBlock style={{top: "5vh", left: (sizingOffset === 2.25) ?  "5%": `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#AF3333">That's no moon!</TxtBlock>
+                <TxtBlock style={{top: "20vh", right: (sizingOffset === 2.25) ?  "5%" : `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#B8C795">It's a portfolio!</TxtBlock>
             </TxtContainer>
             {blockInfo.map((block, i) => 
                 // <BitBlock key={i} margin={block.margin} zIndex={block.size} style={{bottom: `${getBottomPos(pos, block.size, block.offset, 1.4)}vh`}}>
