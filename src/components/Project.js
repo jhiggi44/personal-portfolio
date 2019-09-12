@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import infoLogo from '../images/info.svg';
-import stars from '../images/stars.png';
+import info_yellow from '../images/info_yellow.png';
+import info_green from '../images/info_green.png';
+import info_red from '../images/info_red.png';
+
+import stars from '../images/space.png';
 
 const Container = styled.div`
     position: relative;
@@ -72,6 +75,19 @@ const InfoLogo = styled.img`
     object-fit: cover;
     width: 50px;
     height: 50px;
+    content: url(${info_yellow});
+
+    :hover {
+        content: url(${info_green});
+    }
+
+    :hover {
+        content: url(${info_green});
+    }
+
+    :visited {
+        content: url(${info_red});
+    }
 `;
 
 function formatTitle(title) {
@@ -89,7 +105,7 @@ function Project({title, summary, pic, link}) {
             <Img src={stars}/>
             <Info>
                 <ToGitHub href={link}>
-                    <InfoLogo src={infoLogo} />
+                    <InfoLogo />
                 </ToGitHub>
                 <Title>{formatTitle(title)}</Title>
                 <Summary><SummaryTxt>{summary}</SummaryTxt></Summary>

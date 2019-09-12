@@ -17,6 +17,7 @@ const Title = styled.h2`
     font-weight: 400;
     text-align: center;
     color: #665D5E;
+    color: #B03342;
 `;
 
 const Label = styled.label`
@@ -34,15 +35,15 @@ const Input = styled.input`
     max-width: 650px;
     border: none;
     background-color: #BFBFBF;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid #B03342;;
     font-size: 22px;
     font-family: 'Roboto Mono', monospace;
     color: black;
     
     :focus {
         padding-top: 20px;
-        border-bottom: 5px solid #7a7ae6;
-        border-bottom: 5px solid #F0EB5B;
+        border-bottom: 4px solid #7a7ae6;
+        border-bottom: 4px solid #F0EB5B;
     }
 `;
 
@@ -55,11 +56,11 @@ const MsgBox = styled.textarea`
     width: 100%;
     height: auto;
     border: none;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid #B03342;
     font-family: 'Roboto Mono', monospace;
     background-color: #BFBFBF;
     font-size: 22px;
-    color: black;
+    color: #B03342;
 
     :focus {
         padding-top: 20px;
@@ -68,19 +69,32 @@ const MsgBox = styled.textarea`
     }
 `;
 
+const ErrMsg = styled.div`
+    text-align: center;
+    font-size: 22px;
+    color: #B03342;
+`;
+
 const SubmitBtn = styled.button`
     display: block;
-    margin: 50px auto 0 auto;
+    margin: 50px auto 10px auto;
     padding: 10px 0;
     width: 100%;
     max-width: 650px;
     border: none;
     border-radius: 2px;
-    background-color: #F0EB5B;
+    background-color: #B03342;
     text-align: center;
     font-size: 22px;
-    color: black;
+    color: white;
     font-family: 'Roboto Mono', monospace;
+
+    :active {
+        color: black;
+        background-color: #F0EB5B;
+    }
+
+    :focus { outline: none; }
 `;
 
 function Contact() {
@@ -88,6 +102,7 @@ function Contact() {
     const [email, setEmail] = useState("");
     const [msg, setMsg] = useState("");
     const [isMsg, setIsMsg] = useState("");
+    const [err, setErr] = useState("");
     return (
         <Container>
             <Title>Contact Me</Title>
@@ -126,6 +141,22 @@ function Contact() {
                 />
                 <SubmitBtn onClick={(e) => {
                     e.preventDefault();
+
+                    if (!name) {
+                        setErr("I didn't catch you're name?");
+                        return;
+                    }
+
+                    if (!email || !email.includes("@")) {
+                        setErr("That email looks funny!");
+                        return;
+                    }
+
+                    if(!msg || !isMsg) {
+                        setErr("You forgot the message!");
+                        return;
+                    }
+
                     var templateParams = {
                         name: name,
                         message: msg,
@@ -135,10 +166,16 @@ function Contact() {
                     emailjs.send('sirjordwritesalot_gmail_com','contact_me', templateParams, 'user_LhSPOqFKQI99ETpIc7diB')
                         .then(function(response) {
                            console.log('SUCCESS!', response.status, response.text);
+                           setMsg("Ask me anything...");
+                           setName("");
+                           setEmail("");
+                           setErr("Thanks for the message! I will respond soon.")
                         }, function(err) {
                            console.log('FAILED...', err);
+                           setErr(err);
                         });
                 }}>Submit</SubmitBtn>
+                <ErrMsg>{err}</ErrMsg>
             </form>
         </Container>
     )

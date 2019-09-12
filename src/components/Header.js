@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import IntroImg from './IntroImg';
 import xWingL from '../images/x_wing_l.svg';
 import xWingR from '../images/x_wing_r.svg';
-import stars from '../images/stars.png';
+import stars from '../images/space.png';
 
 // STYLED COMPONENTS
 
@@ -63,14 +63,14 @@ function getMargin() {
 function getSize() {
     let rand = getNumBtwn(0, 100);
     if(rand < 70)
-        return getNumBtwn(50, 125);
+        return getNumBtwn(125, 250);
     if(rand < 95)
-        return getNumBtwn(175, 225);
-    return getNumBtwn(250, 325);
+        return getNumBtwn(300, 400);
+    return getNumBtwn(450, 500);
 }
 
 function getBottomPos(pos, size, offset, rate) {
-    return (pos / (((250 - size) / 1.5)/ rate)) - (offset);
+    return (pos / (((250 - size) / 1.2)/ rate)) - (offset);
 }
 
 function getOpacity(pos, disappearAt) {

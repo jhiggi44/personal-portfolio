@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import clearImg from '../images/clear-vintage.png';
 import githubLogo from '../images/github-logo-yellow.svg';
 import linkLogo from '../images/linkedin-logo-yellow.svg';
-import stars from '../images/stars.png';
+import githubLogoGreen from '../images/github-logo-green.svg';
+import linkLogoGreen from '../images/linkedin-logo-green.svg';
+import stars from '../images/space.png';
 
 const Container = styled.div`
     display: flex;
@@ -30,7 +32,7 @@ const ProfilePic = styled.img`
     max-width: 200px;
     object-fit: contain;
     border-radius: 6px;
-    border: 6px solid #BFBFBF;
+    border: 6px solid #F0EB5B;
 `;
 
 const AboutContainer = styled.div`
@@ -44,7 +46,7 @@ const AboutHeader = styled.h3`
     margin: 15px 10px;
     font-size: calc(24px + (36 - 24) * ((100vw - 600px) / (1600 - 600)));
     text-align: center;
-    color: #BCC795;
+    color: #F0EB5B;
     font-family: 'Bungee', cursive;
 `;
 
@@ -54,7 +56,7 @@ const AboutInfo = styled.p`
     line-height: calc(24px + (34 - 24) * ((100vw - 600px) / (1600 - 600)));
     font-size: calc(24px + (32 - 24) * ((100vw - 600px) / (1600 - 600)));
     letter-spacing: .7px;
-    color: #BCC795;
+    color: #F0EB5B;
 `;
 
 const LogoContainer = styled.div`
@@ -73,6 +75,15 @@ const Logo = styled.img`
     height: 48%;
     object-fit: contain;
     border-radius: 6px;
+    content: url(${props => props.logo});
+
+    :hover {
+        content: url(${props => props.active});
+    }
+
+    :active {
+        content: url(${props => props.active});
+    }
 `;
 
 const Copyright = styled.div`
@@ -101,11 +112,13 @@ function Footer() {
             </ImgContainer>
             <LogoContainer>
                     <Logo
-                        src={githubLogo}
+                        logo={githubLogo}
+                        active={githubLogoGreen}
                         onClick={() => window.location = "https://github.com/jhiggi44"}
                     />
                     <Logo 
-                        src={linkLogo}
+                        logo={linkLogo}
+                        active={linkLogoGreen}
                         onClick={() => window.location = "https://www.linkedin.com/in/jordan-higgins/"}
                     />
             </LogoContainer>
