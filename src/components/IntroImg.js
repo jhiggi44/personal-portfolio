@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import pic from '../images/intro.png';
 import deathStar from '../images/death_star.png';
 
 const Container = styled.div`
@@ -23,7 +21,6 @@ const Img = styled.img`
 const Txt = styled.div`
     margin: 80px auto;
     text-align: center;
-    font-family: 'Roboto Mono', monospace;
     font-family: 'Bungee', cursive;
     color: yellow;
     color: #F0EE5B

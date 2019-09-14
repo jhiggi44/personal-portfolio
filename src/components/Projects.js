@@ -4,19 +4,11 @@ import styled from 'styled-components';
 import Project from './Project';
 import Tele from './Tele';
 
-import wallpaper from '../images/wallpaper_1.jpg';
-
 const Container = styled.div`
     padding-bottom: 120px;
     width: 100vw;
     height: auto;
-    background-color: #f3db95;
-    background-color: #BFBFBF;
-    background-color: #665D5E;
     background-color: white;
-    // background: linear-gradient(black, grey);
-    // clip-path: polygon(83% 2%, 100% 0, 100% 100%, 19% 98%, 0 100%, 0 0);
-    // clip-path: polygon(100% 0, 100% 100%, 35% 98%, 0 100%, 0 0);
     position: relative;
     z-index: 1;
 `;
@@ -26,7 +18,6 @@ const Title = styled.h2`
     padding-top: 80px;
     color: yellow;
     color: black;
-    font-family: 'Roboto Mono', monospace;
     font-family: 'Bungee', cursive;
     font-weight: 400;
     font-size: 60px;

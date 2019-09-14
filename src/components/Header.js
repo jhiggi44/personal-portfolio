@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
 import IntroImg from './IntroImg';
 import xWingL from '../images/x_wing_l.svg';
 import xWingR from '../images/x_wing_r.svg';
 import stars from '../images/space.png';
 
 // STYLED COMPONENTS
-
 const Container = styled.div`
     position: relative;
     width: 100vw;
     background-image: url("${stars}");
-    // background: linear-gradient(black, grey);
     overflow: hidden;
     z-index: 0;
 `;
@@ -20,7 +17,6 @@ const Container = styled.div`
 const BitBlock = styled.object`
     position: absolute;
     bottom: 0;
-    // visibility: ${props => props.disappear ? "hidden" : "visible"};
     left: ${props => props.margin};
     z-index: ${props => props.zIndex};
 `;
@@ -33,15 +29,12 @@ const TxtContainer = styled.div`
 
 const TxtBlock = styled.div`
     position: absolute;
-    // background-color: ${props => props.color};
     padding: 25px;
     display: inline-block;
     color: yellow;
     color: ${props => props.color};
     font-size: calc(32px + (48 - 28) * ((100vw - 600px) / (1600 - 600)));
-    // font-family: 'Press Start 2P', monospace;
     font-family: 'Bungee', cursive;
-    // font-family: 'Squada One', cursive;
     text-align: center;
     z-index: 200;
 `;
@@ -72,13 +65,10 @@ function getSize() {
 function getBottomPos(pos, size, offset, rate) {
     return (pos / (((250 - size) / 1.2)/ rate)) - (offset);
 }
-
-function getOpacity(pos, disappearAt) {
-    return 1 - (pos / disappearAt);
-}
  
 // VARIABLES FOR BLOCKS
 let numOfBlocks = 20;
+
 // const colors = ["#f3db95", "#ebebeb", "#88918e", "#a1a1ff", "#7a7ae6"];
 const colors = ["#f3db95", "#a1a1ff", "#7a7ae6"];
 
@@ -117,7 +107,6 @@ function Header() {
         }
     }, [blockInfo]);
 
-    // disappear={block.disappearAt <= getBottomPos(pos, block.size, block.offset, 1.4)}
     return (
         <Container>
             <IntroImg />
@@ -126,9 +115,6 @@ function Header() {
                 <TxtBlock style={{top: "20vh", right: (sizingOffset === 2.25) ?  "5%" : `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#F0EB5B">It's a portfolio!</TxtBlock>
             </TxtContainer>
             {blockInfo.map((block, i) => 
-                // <BitBlock key={i} margin={block.margin} zIndex={block.size} style={{bottom: `${getBottomPos(pos, block.size, block.offset, 1.4)}vh`}}>
-                //     <rect fill={block.color} width={`${block.size/sizingOffset}px`} height={`${block.size/sizingOffset}px`} />
-                // </BitBlock>
                 <BitBlock margin={`${block.margin}%`} zIndex={block.size} data={(block.margin > 45) ? xWingL : xWingR} width={`${block.size/sizingOffset}px`} style={{bottom: `${getBottomPos(pos, block.size, block.offset, 5)}vh`}}>
                 </BitBlock>
             )}

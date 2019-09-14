@@ -28,8 +28,6 @@ const Info = styled.div`
     left: 0;
     height: 100%;
     width: 100%;
-// ]   background: rgb(255, 255, 255); /* Fallback for older browsers without RGBA-support */
-//     background: rgba(255, 255, 255, 0.6);
     z-index: 1;
 `;
 
@@ -38,7 +36,6 @@ const Title = styled.h3`
     max-width: 90%;
     font-size: calc(34px + (48 - 34) * ((100vw - 600px) / (1600 - 600)));
     text-align: center;
-    // font-family: 'Press Start 2P', monospace;
     color: yellow;
     color: #F0EE5B
     font-family: 'Bungee', cursive;
@@ -52,11 +49,7 @@ const Summary = styled.div`
 const SummaryTxt = styled.p`
     display: inline;
     padding: 2px;
-    color: yellow;
     color: #F0EB5B;
-    // background-color: black;
-    // opacity: .8;
-    font-family: 'Roboto Mono', monospace;
     font-family: 'Squada One', cursive;
     line-height: calc(24px + (34 - 24) * ((100vw - 600px) / (1600 - 600)));
     font-size: calc(24px + (32 - 24) * ((100vw - 600px) / (1600 - 600)));

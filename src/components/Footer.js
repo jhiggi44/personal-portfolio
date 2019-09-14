@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import clearImg from '../images/clear-vintage.png';
 import githubLogo from '../images/github-logo-yellow.svg';
 import linkLogo from '../images/linkedin-logo-yellow.svg';
@@ -17,7 +16,6 @@ const Container = styled.div`
     width: 100vw;
     max-width: 100vw;
     height: auto;
-    // background-color: #B03342;
     background-image: url("${stars}");
     font-family: 'Roboto Mono', monospace;
 `;

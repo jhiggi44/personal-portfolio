@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import * as emailjs from 'emailjs-com';
 
 const Container = styled.div`
-    // margin: 0 10vw;
     padding: 0 10vw 80px 10vw;
     background-color: #BFBFBF;
     font-family: 'Roboto Mono', monospace;
@@ -16,7 +15,6 @@ const Title = styled.h2`
     font-size: 50px;
     font-weight: 400;
     text-align: center;
-    color: #665D5E;
     color: #B03342;
 `;
 
@@ -93,8 +91,6 @@ const SubmitBtn = styled.button`
         color: black;
         background-color: #F0EB5B;
     }
-
-    :focus { outline: none; }
 `;
 
 function Contact() {
