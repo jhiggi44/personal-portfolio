@@ -12,8 +12,8 @@ const Img = styled.img`
     position: relative;
     display: block;
     margin-bottom: -5px;
-    width: 100%;
-    max-width: 600px;
+    width: 60%;
+    max-width: 400px;
     object-fit: cover;
     object-position: 50% 50%;
 `;

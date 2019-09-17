@@ -14,7 +14,7 @@ const Container = styled.div`
     z-index: 0;
 `;
 
-const BitBlock = styled.object`
+const X_WING = styled.object`
     position: absolute;
     bottom: 0;
     left: ${props => props.margin};
@@ -39,6 +39,11 @@ const TxtBlock = styled.div`
     z-index: 200;
 `;
 
+// KNOBS TO TUNE X_WING 
+let numOfBlocks = 7;
+let maxSize = 500; // increases max size of ship (and also the minimum = (max/4))
+let speed = 20; // increases speed
+
 // METHODS FOR GENERATING RANDOMIZED BLOCKS
 function getNumBtwn(min, max) {
     return Math.floor(Math.random() * (max - min) + min)
@@ -49,34 +54,31 @@ function getMargin() {
     if(rand < 40)
         return getNumBtwn(0, 25);
     if(rand < 80)
-        return getNumBtwn(65, 100);
+        return getNumBtwn(65, 90);
     return getNumBtwn(25, 65);
 }
 
 function getSize() {
     let rand = getNumBtwn(0, 100);
     if(rand < 70)
-        return getNumBtwn(125, 250);
+        return getNumBtwn(maxSize/4, maxSize/2);
     if(rand < 95)
-        return getNumBtwn(300, 400);
-    return getNumBtwn(450, 500);
+        return getNumBtwn(maxSize/1.5, maxSize/1.25);
+    return getNumBtwn(maxSize/1.25, maxSize);
 }
 
-function getBottomPos(pos, size, offset, rate) {
-    return (pos / (((250 - size) / 1.2)/ rate)) - (offset);
+function getBottomPos(pos, size, offset) {
+    // this brings down the scale of everything, 
+    // so bigger ships don't move too much faster than smaller ones
+    let sizeAdjust = maxSize - size
+    return (pos / (sizeAdjust / speed)) - offset;
 }
- 
-// VARIABLES FOR BLOCKS
-let numOfBlocks = 20;
-
-// const colors = ["#f3db95", "#ebebeb", "#88918e", "#a1a1ff", "#7a7ae6"];
-const colors = ["#f3db95", "#a1a1ff", "#7a7ae6"];
 
 //START OF COMPONENT
 function Header() {
     const [pos, setPos] = useState(0);
     const [blockInfo, setInfo] = useState([]);
-    const [sizingOffset, setOffset] = useState(1.5);
+    const [sizingOffset, setOffset] = useState(1.5); //makes ships scale better with screen size
     useEffect(()=> {
         // numOfBlocks = Math.floor(window.innerWidth / 45);
         console.log(`numBlock ${numOfBlocks}`);
@@ -98,8 +100,7 @@ function Header() {
                     infoList.push({
                         size: blockSize,
                         offset: getNumBtwn(0, 100),
-                        margin: getMargin(),
-                        color: colors[getNumBtwn(0, colors.length)],
+                        margin: getMargin()
                     });
                 }
                 setInfo(infoList);
@@ -111,12 +112,12 @@ function Header() {
         <Container>
             <IntroImg />
             <TxtContainer>
-                <TxtBlock style={{top: "5vh", left: (sizingOffset === 2.25) ?  "5%": `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#F0EB5B">That's no moon!</TxtBlock>
-                <TxtBlock style={{top: "20vh", right: (sizingOffset === 2.25) ?  "5%" : `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#F0EB5B">It's a portfolio!</TxtBlock>
+                <TxtBlock style={{top: "5vh", left: (sizingOffset === 2.25) ?  "2%": `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#F0EB5B">That's no moon!</TxtBlock>
+                <TxtBlock style={{top: "20vh", right: (sizingOffset === 2.25) ?  "2%" : `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#F0EB5B">It's a portfolio!</TxtBlock>
             </TxtContainer>
             {blockInfo.map((block, i) => 
-                <BitBlock margin={`${block.margin}%`} zIndex={block.size} data={(block.margin > 45) ? xWingL : xWingR} width={`${block.size/sizingOffset}px`} style={{bottom: `${getBottomPos(pos, block.size, block.offset, 5)}vh`}}>
-                </BitBlock>
+                <X_WING margin={`${block.margin}%`} zIndex={block.size} data={(block.margin > 45) ? xWingL : xWingR} width={`${block.size/sizingOffset}px`} style={{bottom: `${getBottomPos(pos, block.size, block.offset)}vh`}}>
+                </X_WING>
             )}
         </Container>
     )
