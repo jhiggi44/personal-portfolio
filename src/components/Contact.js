@@ -5,7 +5,8 @@ import * as emailjs from 'emailjs-com';
 const Container = styled.div`
     padding: 0 10vw 80px 10vw;
     background-color: #BFBFBF;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Squada One', cursive;
+    font-weight: 100;
 `;
 
 const Title = styled.h2`
@@ -35,7 +36,8 @@ const Input = styled.input`
     background-color: #BFBFBF;
     border-bottom: 3px solid #B03342;;
     font-size: 22px;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Squada One', cursive;
+    font-weight: 100;
     color: black;
     
     :focus {
@@ -55,7 +57,8 @@ const MsgBox = styled.textarea`
     height: auto;
     border: none;
     border-bottom: 3px solid #B03342;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Squada One', cursive;
+    font-weight: 100;
     background-color: #BFBFBF;
     font-size: 22px;
     color: #B03342;
@@ -85,7 +88,8 @@ const SubmitBtn = styled.button`
     text-align: center;
     font-size: 22px;
     color: white;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Squada One', cursive;
+    font-weight: 100;
 
     :active {
         color: black;

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
 import Project from './Project';
-import Tele from './Tele';
 
 const Container = styled.div`
     padding-bottom: 120px;
@@ -14,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     padding-top: 80px;
     color: yellow;
     color: black;
@@ -61,8 +59,7 @@ function Projects() {
     return (
         <Container>
             <Title>My Projects</Title>
-            <Tele>
-                {list.map((item, i) => 
+              {list.map((item, i) => 
                     <Project 
                         pic={item.pic}
                         title={item.title}
@@ -71,7 +68,6 @@ function Projects() {
                         key={i}
                     />
                 )}
-            </Tele>
         </Container>
     )
 }

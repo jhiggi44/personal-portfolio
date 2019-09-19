@@ -5,6 +5,11 @@ import xWingL from '../images/x_wing_l.svg';
 import xWingR from '../images/x_wing_r.svg';
 import stars from '../images/space.png';
 
+// KNOBS TO TUNE xWing 
+let numOfBlocks = 9;
+let maxSize = 280; // increases max size of ship (and also the minimum = (max/4))
+let speed = 20; // increases speed
+
 // STYLED COMPONENTS
 const Container = styled.div`
     position: relative;
@@ -14,7 +19,7 @@ const Container = styled.div`
     z-index: 0;
 `;
 
-const X_WING = styled.object`
+const X_Wing = styled.object`
     position: absolute;
     bottom: 0;
     left: ${props => props.margin};
@@ -36,26 +41,22 @@ const TxtBlock = styled.div`
     font-size: calc(32px + (48 - 28) * ((100vw - 600px) / (1600 - 600)));
     font-family: 'Bungee', cursive;
     text-align: center;
-    z-index: 200;
+    z-index: ${maxSize / 2};
 `;
-
-// KNOBS TO TUNE X_WING 
-let numOfBlocks = 7;
-let maxSize = 500; // increases max size of ship (and also the minimum = (max/4))
-let speed = 20; // increases speed
 
 // METHODS FOR GENERATING RANDOMIZED BLOCKS
 function getNumBtwn(min, max) {
     return Math.floor(Math.random() * (max - min) + min)
 }
 
-function getMargin() {
-    let rand = getNumBtwn(0, 100);
-    if(rand < 40)
-        return getNumBtwn(0, 25);
-    if(rand < 80)
-        return getNumBtwn(65, 90);
-    return getNumBtwn(25, 65);
+function getMargin(index) {
+    if (index === 0) 
+        return index;
+    while(index >= 9.5) {
+        index /= 10;
+        console.log(index);
+    }
+    return index * 10;
 }
 
 function getSize() {
@@ -77,12 +78,12 @@ function getBottomPos(pos, size, offset) {
 //START OF COMPONENT
 function Header() {
     const [pos, setPos] = useState(0);
-    const [blockInfo, setInfo] = useState([]);
+    const [xWingInfo, setInfo] = useState([]);
     const [sizingOffset, setOffset] = useState(1.5); //makes ships scale better with screen size
     useEffect(()=> {
         // numOfBlocks = Math.floor(window.innerWidth / 45);
         console.log(`numBlock ${numOfBlocks}`);
-        if (blockInfo.length === 0) {
+        if (xWingInfo.length === 0) {
             window.addEventListener('scroll', () => {
                 setPos(window.pageYOffset);
             });
@@ -100,13 +101,13 @@ function Header() {
                     infoList.push({
                         size: blockSize,
                         offset: getNumBtwn(0, 100),
-                        margin: getMargin()
+                        margin: getMargin(i + 1)
                     });
                 }
                 setInfo(infoList);
             }(numOfBlocks));
         }
-    }, [blockInfo]);
+    }, [xWingInfo]);
 
     return (
         <Container>
@@ -115,9 +116,9 @@ function Header() {
                 <TxtBlock style={{top: "5vh", left: (sizingOffset === 2.25) ?  "2%": `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#F0EB5B">That's no moon!</TxtBlock>
                 <TxtBlock style={{top: "20vh", right: (sizingOffset === 2.25) ?  "2%" : `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#F0EB5B">It's a portfolio!</TxtBlock>
             </TxtContainer>
-            {blockInfo.map((block, i) => 
-                <X_WING margin={`${block.margin}%`} zIndex={block.size} data={(block.margin > 45) ? xWingL : xWingR} width={`${block.size/sizingOffset}px`} style={{bottom: `${getBottomPos(pos, block.size, block.offset)}vh`}}>
-                </X_WING>
+            {xWingInfo.map((block, i) => 
+                <X_Wing margin={`${block.margin}%`} zIndex={block.size} data={(block.margin > 45) ? xWingL : xWingR} width={`${block.size/sizingOffset}px`} style={{bottom: `${getBottomPos(pos, block.size, block.offset)}vh`}}>
+                </X_Wing>
             )}
         </Container>
     )

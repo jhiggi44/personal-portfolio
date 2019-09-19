@@ -4,83 +4,56 @@ import info_yellow from '../images/info_yellow.png';
 import info_green from '../images/info_green.png';
 import info_red from '../images/info_red.png';
 
-import stars from '../images/space.png';
-
 const Container = styled.div`
     position: relative;
     height: 100%;
-    width: 100%;
-`;
-
-const Img = styled.img`
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    z-index: 0;
+    width: ${props => props.wide}
+    margin: 60px auto 0 auto;
 `;
 
 const Info = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    height: auto;
     width: 100%;
-    z-index: 1;
 `;
 
 const Title = styled.h3`
-    margin: 0 auto;
-    max-width: 90%;
+    width: 80%;
+    margin: 0 auto 0 3%;
     font-size: calc(34px + (48 - 34) * ((100vw - 600px) / (1600 - 600)));
-    text-align: center;
-    color: yellow;
-    color: #F0EE5B
+    text-align: left;
+    color: #BFBFBF;
     font-family: 'Bungee', cursive;
 `;
 
-const Summary = styled.div`
-    padding: 5% 5%;
-    width: 90%;
-`;
-
-const SummaryTxt = styled.p`
-    display: inline;
-    padding: 2px;
-    color: #F0EB5B;
-    font-family: 'Squada One', cursive;
-    line-height: calc(24px + (34 - 24) * ((100vw - 600px) / (1600 - 600)));
-    font-size: calc(24px + (32 - 24) * ((100vw - 600px) / (1600 - 600)));
-    letter-spacing: .7px;
-`;
-
 const ToGitHub = styled.a`
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    width: 50px;
-    height: 50px;
+    width: 7%;
+    height: 7%
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 3px;
 `;
 
 const InfoLogo = styled.img`
     object-fit: cover;
-    width: 50px;
-    height: 50px;
-    content: url(${info_yellow});
+    width: 100%;
+`;
 
-    :hover {
-        content: url(${info_green});
-    }
-
-    :hover {
-        content: url(${info_green});
-    }
-
-    :visited {
-        content: url(${info_red});
-    }
+const SummaryTxt = styled.p`
+    text-align: left;
+    margin: 10px auto 25px auto;
+    display: block;
+    padding: 2px;
+    color: black;
+    width: 85%;
+    font-family: 'Squada One', cursive;
+    font-weight: 100;
+    line-height: calc(24px + (34 - 24) * ((100vw - 600px) / (1600 - 600)));
+    font-size: calc(24px + (32 - 24) * ((100vw - 600px) / (1600 - 600)));
+    letter-spacing: .7px;
 `;
 
 function formatTitle(title) {
@@ -94,14 +67,16 @@ function formatTitle(title) {
 
 function Project({title, summary, pic, link}) {
     return (
-        <Container>
-            <Img src={stars}/>
+        <Container wide={(window.innerWidth < 768) ? "95%" : "75%"}>
             <Info>
-                <ToGitHub href={link}>
-                    <InfoLogo />
-                </ToGitHub>
                 <Title>{formatTitle(title)}</Title>
-                <Summary><SummaryTxt>{summary}</SummaryTxt></Summary>
+                <ToGitHub href={link}>
+                    <InfoLogo 
+                        src={info_green} 
+                        onMouseOver={(e) => { e.target.src = info_yellow }} 
+                        onMouseOut={(e) => { e.target.src = info_green }} />
+                </ToGitHub>
+                <SummaryTxt>{summary}</SummaryTxt>
             </Info>
         </Container>
     )
