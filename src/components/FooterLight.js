@@ -48,8 +48,8 @@ const AboutHeader = styled.h3`
 
 const AboutInfo = styled.p`
     width: auto;
-    line-height: calc(24px + (34 - 24) * ((100vw - 600px) / (1600 - 600)));
-    font-size: calc(24px + (32 - 24) * ((100vw - 600px) / (1600 - 600)));
+    line-height: calc(22px + (30 - 22) * ((100vw - 600px) / (1600 - 600)));
+    font-size: calc(20px + (28 - 20) * ((100vw - 600px) / (1600 - 600)));
     letter-spacing: .8px;
     color: #5c3d87;
 `;
@@ -97,7 +97,7 @@ function FooterLight() {
             <AboutContainer>
                 <AboutHeader>About Me</AboutHeader>
                 <AboutInfo>
-                    Hi! I'm Jordan Higgins. I will graduate from the University of Utah with a master's degree in software development in December, 2019. I enjoy discovering new technologies and learning new skills.  
+                    Hi! I'm Jordan Higgins. I will graduate from the University of Utah with a master's degree in software development in December, 2019. I also work as a TA at the University of Utah Pro-ed Coding Bootcamp, where I enjoy teaching others how to code. 
                 </AboutInfo>
             </AboutContainer>
             <ImgContainer>
