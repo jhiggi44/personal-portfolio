@@ -16,13 +16,12 @@ const Title = styled.h2`
     padding-top: 80px;
     color: yellow;
     color: black;
-    font-family: 'Bungee', cursive;
     font-weight: 400;
     font-size: 60px;
     text-align: center;
 `;
 
-function Projects() {
+function ProjectsLight() {
     const [list, setList] = useState([]);
     if (list.length === 0) {
         fetch('https://api.github.com/users/jhigfolio/repos')
@@ -75,4 +74,4 @@ function Projects() {
     )
 }
 
-export default Projects;
+export default ProjectsLight;

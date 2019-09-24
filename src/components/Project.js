@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import info_yellow from '../images/info_yellow.png';
+import info_black from '../images/info_black.png';
 import info_green from '../images/info_green.png';
 import info_red from '../images/info_red.png';
 
@@ -25,15 +25,15 @@ const Title = styled.h3`
     margin: 0 auto 0 3%;
     font-size: calc(34px + (48 - 34) * ((100vw - 600px) / (1600 - 600)));
     text-align: left;
-    color: #BFBFBF;
-    font-family: 'Bungee', cursive;
+    // color: #BFBFBF; // dark theme color
+    color: #efd090
 `;
 
 const ToGitHub = styled.a`
     width: 7%;
     height: 7%
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 35px;
+    max-height: 35px;
     margin-right: 3px;
 `;
 
@@ -49,10 +49,9 @@ const SummaryTxt = styled.p`
     padding: 2px;
     color: black;
     width: 85%;
-    font-family: 'Squada One', cursive;
     font-weight: 100;
-    line-height: calc(24px + (34 - 24) * ((100vw - 600px) / (1600 - 600)));
-    font-size: calc(24px + (32 - 24) * ((100vw - 600px) / (1600 - 600)));
+    line-height: calc(28px + (38 - 28) * ((100vw - 600px) / (1600 - 600)));
+    font-size: calc(22px + (28 - 22) * ((100vw - 600px) / (1600 - 600)));
     letter-spacing: .7px;
 `;
 
@@ -72,9 +71,9 @@ function Project({title, summary, pic, link}) {
                 <Title>{formatTitle(title)}</Title>
                 <ToGitHub href={link}>
                     <InfoLogo 
-                        src={info_green} 
-                        onMouseOver={(e) => { e.target.src = info_yellow }} 
-                        onMouseOut={(e) => { e.target.src = info_green }} />
+                        src={info_black} 
+                        onMouseOver={(e) => { e.target.src = info_green }} 
+                        onMouseOut={(e) => { e.target.src = info_black }} />
                 </ToGitHub>
                 <SummaryTxt>{summary}</SummaryTxt>
             </Info>
