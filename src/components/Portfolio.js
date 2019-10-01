@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from './Header';
+// import Header from './Header';
+// import Projects from './Projects';
+// import Contact from './Contact';
+// import Footer from './Footer';
 import HeaderLight from './HeaderLight';
 import ContactLight from './ContactLight';
-import Projects from './Projects';
-import Contact from './Contact';
-import Footer from './Footer';
 import FooterLight from './FooterLight';
 
 import styled from 'styled-components';

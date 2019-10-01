@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Gallery from './Gallery';
 import info_black from '../images/info_black.png';
 import info_green from '../images/info_green.png';
-import info_red from '../images/info_red.png';
 
 const Container = styled.div`
     position: relative;
@@ -64,7 +64,7 @@ function formatTitle(title) {
     return formatted;
 }
 
-function Project({title, summary, pic, link}) {
+function Project({title, summary, images, link}) {
     return (
         <Container wide={(window.innerWidth < 768) ? "95%" : "75%"}>
             <Info>
@@ -76,6 +76,7 @@ function Project({title, summary, pic, link}) {
                         onMouseOut={(e) => { e.target.src = info_black }} />
                 </ToGitHub>
                 <SummaryTxt>{summary}</SummaryTxt>
+                <Gallery images={images} />
             </Info>
         </Container>
     )

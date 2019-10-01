@@ -27,18 +27,18 @@ function ProjectsLight() {
         fetch('https://api.github.com/users/jhigfolio/repos')
         .then(response => response.json())
         .then(repos => {
-            console.log(repos);
+            // console.log(repos);
             // console.log(repos[0]);
             let promises = []
             repos.forEach((repo, i) => {
                 promises.push(new Promise((res, rej) => {
-                    fetch(`https://api.github.com/repos/jhigfolio/${repo.name}/contents/img.jpg`,  {
+                    fetch(`https://api.github.com/repos/jhigfolio/${repo.name}/contents/images`,  {
                         'User-Agent': 'jhigfolio'
                     })
                     .then(response => response.json())
-                    .then(img => {
+                    .then(images => {
                         res({
-                            pic: img.download_url,
+                            images: images,
                             title: repo.name,
                             summary: repo.description,
                             link: repo.html_url
@@ -63,7 +63,7 @@ function ProjectsLight() {
             <Title>My Projects</Title>
               {list.map((item, i) => 
                     <Project 
-                        pic={item.pic}
+                        images={item.images}
                         title={item.title}
                         summary={item.summary}
                         link={item.link} 

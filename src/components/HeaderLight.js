@@ -63,7 +63,7 @@ function getMargin(index) {
         return index;
     while(index >= 8) {
         index /= 10;
-        console.log(index);
+        // console.log(index);
     }
     return index * 10;
 }
@@ -126,9 +126,13 @@ function HeaderLight() {
                 <TxtBlock style={{top: "20vh", right: (sizingOffset === 2.25) ?  "2%" : `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#5c3d87">A software developer!</TxtBlock>
             </TxtContainer>
             {floaterInfo.map((block, i) => 
-                // <X_Wing margin={`${block.margin}%`} zIndex={block.size} data={(block.margin > 45) ? xWingL : xWingR} width={`${block.size/sizingOffset}px`} style={{bottom: `${getBottomPos(pos, block.size, block.offset)}vh`}}>
-                // </X_Wing>
-                <Floaters margin={`${block.margin}%`} zIndex={block.size} fontSize={`${(block.size/sizingOffset)/2}px`} style={{bottom: `${getBottomPos(pos, block.size, block.offset)}vh`, color: "white"}}>
+                <Floaters 
+                    margin={`${block.margin}%`} 
+                    zIndex={block.size} 
+                    fontSize={`${(block.size/sizingOffset)/2}px`} 
+                    style={{bottom: `${getBottomPos(pos, block.size, block.offset)}vh`, color: "white"}}
+                    key={i}
+                    >
                     {blocks[i]}
                 </Floaters>
             )}

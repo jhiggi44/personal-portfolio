@@ -33,17 +33,18 @@ function Projects() {
             let promises = []
             repos.forEach((repo, i) => {
                 promises.push(new Promise((res, rej) => {
-                    fetch(`https://api.github.com/repos/jhigfolio/${repo.name}/contents/img.jpg`,  {
+                    fetch(`https://api.github.com/repos/jhigfolio/${repo.name}/contents/`,  {
                         'User-Agent': 'jhigfolio'
                     })
                     .then(response => response.json())
-                    .then(img => {
+                    .then(images => {
                         res({
-                            pic: img.download_url,
+                            images: images,
                             title: repo.name,
                             summary: repo.description,
                             link: repo.html_url
                         });
+                        console.log(images);
                     });
                 })); 
             })
