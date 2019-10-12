@@ -9,13 +9,21 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 300px;
+    padding: 5px;
     overflow-x: scroll;
+    overflow-y: hidden;
+    box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+        width: 0 !important;
+    }
 `;
 
 const Img = styled.img`
     max-width: 92%;
-    max-height: 300px;
+    max-height: 280px;
     margin: 0 7.5px;
+    border-radius: 7.5px;
 `;
 
 function Gallery({ images }) {

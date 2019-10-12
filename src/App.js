@@ -1,14 +1,18 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Portfolio from './components/Portfolio';
+import ThemeToggle from './components/ThemeToggle';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
+export const ThemeContext = React.createContext();
+function App() {
+  const [isInSpaceMode, toggleSpaceMode] = useState(false);
+  return (
+    <div>
+      <ThemeContext.Provider value={{isInSpaceMode: isInSpaceMode}}>
+        <ThemeToggle toggler={toggleSpaceMode} />
         <Portfolio />
-      </div>
-    );
-  }
+      </ThemeContext.Provider>
+    </div>
+  );
 }
 
 export default App;

@@ -1,14 +1,9 @@
 import React from 'react';
-// import Header from './Header';
-// import Projects from './Projects';
-// import Contact from './Contact';
-// import Footer from './Footer';
-import HeaderLight from './HeaderLight';
-import ContactLight from './ContactLight';
-import FooterLight from './FooterLight';
-
+import Header from './Header';
+import Projects from './Projects';
+import Contact from './Contact';
+import Footer from './Footer';
 import styled from 'styled-components';
-import ProjectsLight from './ProjectsLight';
 
 const Container = styled.div`
     overflow: hidden;
@@ -17,14 +12,10 @@ const Container = styled.div`
 function Portfolio() {
     return (
         <Container>
-            {/* <Header /> */}
-            <HeaderLight />
-            <ProjectsLight />
-            {/* <Projects /> */}
-            <ContactLight />
-            {/* <Contact /> */}
-            <FooterLight />
-            {/* <Footer /> */}
+            <Header />
+            <Projects />
+            <Contact />
+            <Footer />
         </Container>
     )
 }

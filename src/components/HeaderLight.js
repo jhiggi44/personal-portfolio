@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Theme from '../theme/Theme.js';
 import background from '../images/intro_port.png';
 import profile from '../images/intro_port_pic.png';
 
-// KNOBS TO TUNE xWing 
-let blocks = ["React", "Node.js", "Dart", "Java", "SQL", ".NET", "Flutter", "Express", "Spring"];
-// let numOfBlocks = 9;
+// KNOBS TO TUNE SKILLZ
 let maxSize = 260; // increases max size of ship (and also the minimum = (max/4))
 let speed = 20; // increases speed
+let skillz = ["React", "Node.js", "Dart", "Java", "SQL", ".NET", "Flutter", "Express", "Spring"];
+
+// INITIALIZE THEME
+const theme = new Theme(false);
 
 // STYLED COMPONENTS
 const Container = styled.div`
@@ -17,6 +20,7 @@ const Container = styled.div`
     background-image: url("${background}");
     overflow: hidden;
     z-index: 0;
+    font-family: ${theme.titleFontFamily};
 `;
 
 const Pic = styled.img`
@@ -25,14 +29,14 @@ const Pic = styled.img`
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: ${maxSize/2.5};
+    z-index: ${maxSize / 2.5};
 `;
 
 const Floaters = styled.h2`
     position: absolute;
-    bottom: 0;
     font-size: ${props => props.fontSize};
     left: ${props => props.margin};
+    color: ${theme.headerTextColor};
     z-index: ${props => props.zIndex};
 `;
 
@@ -46,7 +50,7 @@ const TxtBlock = styled.h1`
     position: absolute;
     padding: 25px;
     display: inline-block;
-    color: ${props => props.color};
+    color: ${theme.headerTitleColor};
     font-size: calc(32px + (48 - 28) * ((100vw - 600px) / (1600 - 600)));
     font-weight: 900;
     text-align: center;
@@ -63,7 +67,6 @@ function getMargin(index) {
         return index;
     while(index >= 8) {
         index /= 10;
-        // console.log(index);
     }
     return index * 10;
 }
@@ -79,61 +82,59 @@ function getSize() {
 
 function getBottomPos(pos, size, offset) {
     // this brings down the scale of everything, 
-    // so bigger ships don't move too much faster than smaller ones
+    // so bigger words/skills don't move too much faster than smaller ones
     let sizeAdjust = maxSize - size
     return (pos / (sizeAdjust / speed)) - offset;
 }
 
 //START OF COMPONENT
-function HeaderLight() {
-    const [pos, setPos] = useState(0);
-    const [floaterInfo, setInfo] = useState([]);
-    const [sizingOffset, setOffset] = useState(1.5); //makes ships scale better with screen size
+function HeaderLight({pos}) {
+    const [skillzMap, setSkillzMap] = useState([]);
+    const [sizingOffset, setOffset] = useState(1.5); //makes words scale better with screen size
     useEffect(()=> {
-        // numOfBlocks = Math.floor(window.innerWidth / 45);
-        // console.log(`numBlock ${numOfBlocks}`);
-        if (floaterInfo.length === 0) {
-            window.addEventListener('scroll', () => {
-                setPos(window.pageYOffset);
-            });
-
+        if (skillzMap.length === 0) {
             if(window.innerWidth < 600) {
                 setOffset(2.25);
             } else if (window.innerWidth < 900) {
                 setOffset(1.925);
             }
-            // creates a random infomap to generate randomized blocks that rise with different speeds. 
+            // creates a random map to generate randomized word sizes that rise with different speeds. 
             (function (total) {
-                let infoList = [];
+                let map = [];
                 for (let i = 0; i < total; i++) {
-                    let blockSize = getSize();
-                    infoList.push({
-                        size: blockSize,
+                    map.push({
+                        size: getSize(),
                         offset: getNumBtwn(0, 80),
                         margin: getMargin(i + 1)
                     });
                 }
-                setInfo(infoList);
-            }(blocks.length));
+                setSkillzMap(map);
+            }(skillz.length));
         }
-    }, [floaterInfo]);
+    }, [skillzMap]);
 
     return (
         <Container>
             <Pic src={profile} />
             <TxtContainer>
-                <TxtBlock style={{top: "5vh", left: (sizingOffset === 2.25) ?  "2%": `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#5c3d87">I'm Jordan Higgins.</TxtBlock>
-                <TxtBlock style={{top: "20vh", right: (sizingOffset === 2.25) ?  "2%" : `calc(20% + ${pos/(10 * sizingOffset)}px)`}} color="#5c3d87">A software developer!</TxtBlock>
+                <TxtBlock 
+                    style={{top: "5vh", left: (sizingOffset === 2.25) ?  "2%": `calc(20% + ${pos/(10 * sizingOffset)}px)`}}>
+                        I'm Jordan Higgins.
+                </TxtBlock>
+                <TxtBlock 
+                    style={{top: "20vh", right: (sizingOffset === 2.25) ?  "2%" : `calc(20% + ${pos/(10 * sizingOffset)}px)`}}>
+                        A software developer!
+                </TxtBlock>
             </TxtContainer>
-            {floaterInfo.map((block, i) => 
+            {skillzMap.map((skill, i) => 
                 <Floaters 
-                    margin={`${block.margin}%`} 
-                    zIndex={block.size} 
-                    fontSize={`${(block.size/sizingOffset)/2}px`} 
-                    style={{bottom: `${getBottomPos(pos, block.size, block.offset)}vh`, color: "white"}}
+                    margin={`${skill.margin}%`} 
+                    zIndex={skill.size} 
+                    fontSize={`${(skill.size/sizingOffset)/2}px`} 
                     key={i}
+                    style={{bottom: `${getBottomPos(pos, skill.size, skill.offset)}vh`}}
                     >
-                    {blocks[i]}
+                    {skillz[i]}
                 </Floaters>
             )}
         </Container>

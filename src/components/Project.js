@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../App';
 import styled from 'styled-components';
 import Gallery from './Gallery';
 import info_black from '../images/info_black.png';
+import info_yellow from '../images/info_yellow.png';
 import info_green from '../images/info_green.png';
 
 const Container = styled.div`
@@ -25,8 +27,6 @@ const Title = styled.h3`
     margin: 0 auto 0 3%;
     font-size: calc(34px + (48 - 34) * ((100vw - 600px) / (1600 - 600)));
     text-align: left;
-    // color: #BFBFBF; // dark theme color
-    color: #efd090
 `;
 
 const ToGitHub = styled.a`
@@ -47,7 +47,6 @@ const SummaryTxt = styled.p`
     margin: 10px auto 25px auto;
     display: block;
     padding: 2px;
-    color: black;
     width: 85%;
     font-weight: 100;
     line-height: calc(28px + (38 - 28) * ((100vw - 600px) / (1600 - 600)));
@@ -65,15 +64,16 @@ function formatTitle(title) {
 }
 
 function Project({title, summary, images, link}) {
+    let ctx = useContext(ThemeContext);
     return (
         <Container wide={(window.innerWidth < 768) ? "95%" : "75%"}>
             <Info>
                 <Title>{formatTitle(title)}</Title>
                 <ToGitHub href={link}>
                     <InfoLogo 
-                        src={info_black} 
+                        src={ctx.isInSpaceMode ? info_yellow : info_black} 
                         onMouseOver={(e) => { e.target.src = info_green }} 
-                        onMouseOut={(e) => { e.target.src = info_black }} />
+                        onMouseOut={(e) => { e.target.src = ctx.isInSpaceMode ? info_yellow : info_black }} />
                 </ToGitHub>
                 <SummaryTxt>{summary}</SummaryTxt>
                 <Gallery images={images} />

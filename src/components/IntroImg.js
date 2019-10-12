@@ -18,23 +18,25 @@ const Img = styled.img`
     object-position: 50% 50%;
 `;
 
-const Txt = styled.div`
+const Txt = styled.h1`
     margin: 80px auto;
     text-align: center;
-    font-family: 'Bungee', cursive;
-    color: yellow;
-    color: #F0EE5B
     font-size: 46px;
     font-weight: 400;
+    color: ${props => props.color};
 `;
 
-function IntroImg() {
+function IntroDark({color}) {
     return (
         <Container>
-            <Txt>Jordan Higgins Presents...</Txt>
-            <Img src={deathStar}/>
+            <Txt color={color}>
+                Jordan Higgins Presents...
+            </Txt>
+            <Img 
+                src={deathStar}
+            />
         </Container>
     )
 }
 
-export default IntroImg;
+export default IntroDark;
