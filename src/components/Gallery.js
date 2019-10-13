@@ -14,8 +14,10 @@ const Container = styled.div`
     overflow-y: hidden;
     box-sizing: border-box;
 
-    &::-webkit-scrollbar {
-        width: 0 !important;
+    @media (max-width: 600px) {
+        &::-webkit-scrollbar {
+            width: 0 !important;
+        }
     }
 `;
 
